@@ -1,0 +1,77 @@
+                                    Component Lifecycle method
+
+=> Is a function that we can optionally define inside of our class based component if we decide to implement these methods. They will be allowed automatically by React at certian points during a component's life cycle.
+=> The tearm "Lifecycle" refering to the fact that a component is going to be created and then show up in the DOM or show up on the screen of our browser and then at some point in time we might call "set state"  which will cause the component to render and then in theory, at some point in time a component might be removed from the DOM altogether and stop showing its content on the screen. These entire series of events are refered to as "Components lifecycle".
+        
+Component Lifecycle
+Time line:
+=> 1. Contructor(We can optionally define. If we do, it will automatically called when a new instance of our component is created)
+=> 2. Render (Not optional, Have to define, Content visible on the screen)
+=> 3. ComponentDidMount(It's called immediately after a component shows up on the screen. After the ComponentDidMount method gets called, our component will Sit and wait for updates, an update is going to come in the form of calling setState())
+=> 4. ComponentDidUpdate(Anytime that setState() is called, ComponentDidUpdate method will be called automatically. Then after that, our component might just Sit and wait until it gets another update. NOTE: NOTE:Just remember that, anytime our component updates, the render() will be called, we'll return some JSX and show on the screen. And then right after that, ComponentDidUpdate() will be invoked)
+=> 5. ComponentWillUnmount - At some point of time we might decide to stop showing this component on the screen, ComponentWillUnmount method will be automatically called. This method is usually used when we want to do some clean up.
+
+
+                                        Why lifecycle Methods?
+
+=> 1. Contructor - Good place to de 1 time setup (innitialization)
+=> 2. Render - Avoid doing anything besides returning JSX
+=> 3. ComponentDidMount - Good place to do data loading; Do some initial data loading. NOTE: ComponentDidMount() only get invoked one time. So we use it to do loading and fetching data that will be requested only 1 time.
+=> 4. ComponentDidUpdate - NOTE: Good place to do more data loading when state/props change. If we want to make multiple data loading requests, every time a component is updated, start looking at ComponentDidUpdate()
+=> 5. ComponentWillUnmount - Good place to do cleanup (especially for NON- React stuff). Is used anytime that we r about to remove a component from the screen and we need to do some clean up after it. We used to use the ComponentWillUnmount() way more frequently, and each time that we were using React with non-react libraries. Ex. if we were making use of Google Maps inside of a React application
+NOTE: Why should NOT we do the data loading(Ex. request position from Geolocation) in the contructor. According to the official React documentation and the community convention, they say do NOT do data loading in the condtructor. You absolutely can. There's no technical reason that you can not do some initial data loading like an API request inside the contructor. BUT it is reccommended that you do it inside the ComponentDidMount() instead. There is a simple reason for that. If you always centralize all of your data loading stuff inside the ComponentDidMount() as supposed to spreding it out between ComponentDidMount() and contructor, its going to lead to more clear code.
+NOTE: These are not entirely lifecycle methods. There are 3 more that rarely used:
+=> shouldComponentUpdate
+=> getDerivedStateFromProps
+=> getSnapshotBeforeUpdate
+
+
+                                        Methods used
+=> Date.getMonth()
+
+
+                                        JS techniques used
+=> Turnery operator 
+=> Destructure 
+
+                                        libraries used
+=> Semantic UI
+    HOW to use an icon in Semantic UI:
+    => Go to https://semantic-ui.com/
+    => Go to icon
+    => Go to Definition to see how to use an icon by - Click <> on any code examples - it will show u an example of how to use Icon - u' ll see how to define the class name to get the icon u want.
+    => Go to Icons - scroll down and u can see all Icons that available to us
+
+                                        API used
+=> Geolocation
+
+
+                                    Benefits of class component
+=> Easier code organization
+=> Can use "state" (another React system)
+    => Easier to handle user inputs
+=> Understand lifecycle events
+    => Easier to do things when the app first starts
+
+
+                                    Rules of class component
+=> Must be a JS class
+=> Must extend (subclass) React.Component
+=> Must define a render method that returns some amount of JSX
+
+                                    Rules of state
+=> Only usable with class Component
+=> You will confuse props with state
+=> "State" is a JS object that contain data relevant to a component
+=> Updating "state" on a component causes the component to almost instantly rerender
+=> State must be initialized when a component is created
+    => We can initialise the state as an instance property
+=> State can only be updated using the function "setState()"
+    => "setState()" is a method of a component NOT the "state" object
+
+
+NOTE: Read more:
+=> When do we call super() in JS?  Read here : https://css-tricks.com/what-is-super-in-javascript/
+=> rules to use {} in JSX  
+=> Different between instance property VS field in JS
+
